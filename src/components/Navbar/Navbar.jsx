@@ -1,4 +1,5 @@
 import React from "react";
+import { Search} from 'lucide-react';
 
 const MenuLinks = [
   {
@@ -20,12 +21,16 @@ const MenuLinks = [
 
 const Navbar = () => {
   return (
-    <div className="container">
+    <div className="container flex justify-between items-center">
       {/*Logo and links */}
 
-      <div className="bg-white dark:bg-gray-900 dark:text-white duration-200 relative z-40">
+      <div className="bg-white 
+                      dark:bg-gray-900 
+                      dark:text-white 
+                      duration-200 
+                      relative z-40">
         <div className="py-4">
-          <div className="flex justify-between items-center">
+          <div className="flex items-center gap-4">
             <a
               href="#"
               className="text-primary 
@@ -34,7 +39,7 @@ const Navbar = () => {
                         text-2xl uppercase 
                         sm:text-3xl"
             >
-              Farmanada
+              Farma-nada
             </a>
 
             {/*Items menu */}
@@ -42,7 +47,13 @@ const Navbar = () => {
               <ul className="flex items-center gap-6">
                 {MenuLinks.map((data, index) => (
                   <li key={index}>
-                    <a href={data.link}>{data.name}</a>
+                    <a href={data.link} 
+                    className="inline-block px-4
+                              font-semibold 
+                              hover:text-gray-600 
+                              dark:text-white 
+                              duration-200 
+                              dark:hover:text-gray-500">{data.name}</a>
                   </li>
                 ))}
               </ul>
@@ -51,6 +62,25 @@ const Navbar = () => {
         </div>
       </div>
       {/*Navbar right section / Seccion derecha del navbar */}
+      <div className="flex justify-between items-center gap-4">
+      {/* Seccion de busqueda/Searh bar section */ }
+      <div className="relative group hidden sm:block">
+                <input type="text" placeholder="Buscar..."
+                  className="
+                  search-bar
+                  "/>
+                  <Search 
+                  className="text-xl text-gray600
+                  dark:text-gray-400
+                  "
+                  />
+                
+      {/* Modo oscuro/Dark mode section */ }
+      <div>
+
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
