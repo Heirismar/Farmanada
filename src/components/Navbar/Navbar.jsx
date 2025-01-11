@@ -1,6 +1,9 @@
 import React from "react";
 import { Search } from "lucide-react";
 import { ShoppingCart } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+import Darkmode from "./Darkmode";
+import { data } from "autoprefixer";
 
 const MenuLinks = [
   {
@@ -16,6 +19,24 @@ const MenuLinks = [
   {
     id: 3,
     name: "Shop",
+    link: "/#",
+  },
+];
+
+const DropdownLinks = [
+  {
+    id: 1,
+    name: "Ofertas",
+    link: "/#",
+  },
+  {
+    id: 2,
+    name: "Mejores Articulos",
+    link: "/#",
+  },
+  {
+    id: 3,
+    name: "Productos con mas ventas",
     link: "/#",
   },
 ];
@@ -48,6 +69,33 @@ const Navbar = () => {
                     </a>
                   </li>
                 ))}
+                {/* Dropdown elements// Elementos Desplegables*/}
+                <li className="group relative cursor-pointer">
+                  <a
+                    href="#"
+                    className="flex items-center gap-[2px] py-2 font-semibold hover:text-gray-600 dark:hover:text-white"
+                  >
+                    Quick Links
+                    <span>
+                      <ChevronDown className="duration-300 group-hover:rotate-180" />
+                    </span>
+                  </a>
+                  {/*Dropdown Links*/}
+                  <div className="absolute z-[9999] hidden w-[200px] rounded-md bg-white p-2 text-black shadow-md group-hover:block dark:bg-gray-900 dark:text-white">
+                    <ul className="space-y-2">
+                      {DropdownLinks.map((data, index) => (
+                        <li>
+                          <a
+                            href={data.link}
+                            className="font-semibold text-gray-600 duration-200 hover:text-black dark:hover:text-white"
+                          >
+                            {data.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
@@ -71,8 +119,11 @@ const Navbar = () => {
             4
           </div>
         </button>
+
         {/* Modo oscuro/Dark mode section */}
-        <div></div>
+        <div>
+          <Darkmode />
+        </div>
       </div>
     </div>
   );
